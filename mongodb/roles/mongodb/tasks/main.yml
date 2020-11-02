@@ -1,47 +1,43 @@
 ---
 
-# - name: Install epel-release
-#   yum: 
-#     name: epel-release 
+- name: install firewall-cmd
+  yum:
+    name: firewalld 
+    state: latest
 
-# - name: Install  python
-#   yum: 
-#     name: python-pip 
-
-# - name: open firewall 27017
-#   shell: firewall-cmd --permanent --add-port={{item}}/tcp
-#   with_items:
-#    - 27017
-
-# - name: reload firewall
-#   shell: firewall-cmd --reload
-
-# - name: install pymongo
-#   yum: 
-#     name: pymongo
-
-# - name: Configure the package management system
-#   template: 
-#     src: mongodb-org-4.2.repo.j2 
-#     dest: /etc/yum.repos.d/mongodb-org-4.2.repo 
-#     backup: yes
-
-# - name: install mongodb
-#   yum: 
-#     name: mongodb-org 
-#     state: latest
-
-# - name: Configure the package management system with replica
-#   template: 
-#     src: mongod.conf.j2 
-#     dest: /etc/mongod.conf 
-#     backup: yes
-
-# - name: start service mongod
-#   service: 
-#    name: mongod.service
-#    state: started
+- name: start service firewall-cmd
+  service: 
+   name: firewalld.service
+   state: started
   
+- name: allow mongo port (27017/TCP)
+  firewalld:
+   port: 27017/tcp
+   permanent: true
+   state: enabled
+
+- name: Configure the package management system
+  template:
+    src: mongodb-org-4.2.repo.j2 
+    dest: /etc/yum.repos.d/mongodb-org-4.2.repo 
+    backup: yes
+
+- name: install mongodb
+  yum:
+    name: mongodb-org 
+    state: latest
+
+- name: Configure the package management system with replica
+  template:
+    src: mongod.conf.j2 
+    dest: /etc/mongod.conf
+    backup: yes
+
+- name: start service mongod
+  service: 
+   name: mongod.service
+   state: started
+
 - name: copy initRS script
   template:
     src: roles/mongodb/templates/initRS.j2
@@ -50,18 +46,35 @@
     group: mongod
 
 - name: initiate replica set from first primary
-  shell: mongo < /tmp/initRS.js
+  shell: mongo --host {{ansible_default_ipv4.address}}:27017 < /tmp/initRS.js
+  run_once: truec
 
-- name: Copy keyfile for replica
+- name: copy user admin
   template:
-    srv: roles/mongodb/templates/keyFile.j2
-    dest: /var/lib/mongo/keyFile
-    mode: 600
+    src: create_admin.j2
+    dest: /tmp/create_admin
     owner: mongod
     group: mongod
 
-- name: grant permission for keyFile
-  shell: chcon system_u:object_r:mongod_var_lib_t:s0 /var/lib/mongo/keyFile
+# - name: create user admin
+#   shell: mongo '{{connection_string}}' < /tmp/create_admin
+#   run_once: true
+
+# - name: Restart service mongodb
+#   service:
+#     name: mongod
+#     state: restarted
+
+- name: Copy keyfile for replica
+  template:
+    src: roles/mongodb/templates/keyfile.j2
+    dest: /var/lib/mongo/keyFile
+    mode: 0600
+    owner: mongod
+    group: mongod
+
+# - name: grant permission for keyFile
+#   shell: chcon system_u:object_r:mongod_var_lib_t:s0 /var/lib/mongo/keyFile
 
 - name: Restart service mongodb
   service:

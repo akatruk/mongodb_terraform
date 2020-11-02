@@ -1,0 +1,11 @@
+--- 
+  all:
+      children: 
+        mongo_cluster: 
+              hosts: 
+                ${hostname1}:
+                  ansible_host: ${host1_ip}
+                ${hostname2}:
+                  ansible_host: ${host2_ip}
+                ${hostname3}:
+                  ansible_host: ${host3_ip}
