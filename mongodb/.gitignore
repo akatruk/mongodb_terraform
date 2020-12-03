@@ -4,3 +4,4 @@
 *.key
 password_admin
 keyfile.*
+credentials.passwd

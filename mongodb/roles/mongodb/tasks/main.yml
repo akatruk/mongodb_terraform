@@ -9,12 +9,15 @@
   service: 
    name: firewalld.service
    state: started
-  
+
 - name: allow mongo port (27017/TCP)
   firewalld:
    port: 27017/tcp
    permanent: true
    state: enabled
+
+- name: firewall-cmd --reload
+  shell: firewall-cmd --reload
 
 - name: Configure the package management system
   template:
@@ -56,14 +59,14 @@
     owner: mongod
     group: mongod
 
-# - name: create user admin
-#   shell: mongo '{{connection_string}}' < /tmp/create_admin
-#   run_once: true
+- name: create user admin
+  shell: mongo '{{connection_string}}' < /tmp/create_admin
+  run_once: true
 
-# - name: Restart service mongodb
-#   service:
-#     name: mongod
-#     state: restarted
+- name: Restart service mongodb
+  service:
+    name: mongod
+    state: restarted
 
 - name: Copy keyfile for replica
   template:
@@ -73,8 +76,8 @@
     owner: mongod
     group: mongod
 
-# - name: grant permission for keyFile
-#   shell: chcon system_u:object_r:mongod_var_lib_t:s0 /var/lib/mongo/keyFile
+- name: grant permission for keyFile
+  shell: chcon system_u:object_r:mongod_var_lib_t:s0 /var/lib/mongo/keyFile
 
 - name: Restart service mongodb
   service:

@@ -1,8 +1,3 @@
-hostname1 = "mongodb0"
-host1_ip = "81.177.136.140"
-
-hostname2 = "mongodb1"
-host2_ip = "81.177.6.55"
-
-hostname3 = "mongodb2"
-host3_ip = "195.161.41.237"
+host1_ip = "10.1.200.30"
+host2_ip = "10.1.200.31"
+host3_ip = "10.1.200.32"

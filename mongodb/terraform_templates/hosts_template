@@ -3,9 +3,9 @@
       children: 
         mongo_cluster: 
               hosts: 
-                ${hostname1}:
+                mongodb01:
                   ansible_host: ${host1_ip}
-                ${hostname2}:
+                mongodb02:
                   ansible_host: ${host2_ip}
-                ${hostname3}:
+                mongodb03:
                   ansible_host: ${host3_ip}

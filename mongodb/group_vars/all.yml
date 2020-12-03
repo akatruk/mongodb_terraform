@@ -1,5 +1,0 @@
----
-
-  ansible_user            : root
-  connection_string: mongodb://81.177.136.140,81.177.6.55,195.161.41.237/?replicaSet=rs0
-  password_admin: 6gdTXiY1afaPntuNJhlA0ekc

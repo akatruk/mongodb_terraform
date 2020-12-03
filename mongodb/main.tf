@@ -11,9 +11,6 @@ locals {
 data "template_file" "init_inventory" {
   template = "${file("terraform_templates/hosts_template")}"
   vars = {
-    hostname1 = "${var.hostname1}"
-    hostname2 = "${var.hostname2}"
-    hostname3 = "${var.hostname3}"
     host1_ip = "${var.host1_ip}"
     host2_ip = "${var.host2_ip}"
     host3_ip = "${var.host3_ip}"
