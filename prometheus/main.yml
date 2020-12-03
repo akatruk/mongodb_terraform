@@ -1,11 +1,11 @@
 ---
 
 - name: Install prometheus & grafana
-  hosts: monitor
+  hosts: db
   become: yes
 
   roles: 
     # - preparation
-    - deploy-monitoring
+    # - deploy-monitoring
     # - postgres-exporter
-    # - node-exporter 
+    - node-exporter 

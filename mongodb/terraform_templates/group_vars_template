@@ -1,0 +1,5 @@
+---
+
+  ansible_user            : root
+  connection_string: mongodb://${host1_ip},${host2_ip},${host3_ip}/?replicaSet=rs0
+  password_admin: ${random_password}

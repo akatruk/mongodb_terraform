@@ -1,7 +1,7 @@
 ---
 
 - name: Install PostgreSQL patroni
-  hosts: mediateca
+  hosts: radis
   become: yes
 
 

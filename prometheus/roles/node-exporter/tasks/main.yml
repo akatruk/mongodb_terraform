@@ -1,0 +1,11 @@
+---
+  - name: open ports 9100
+    shell: firewall-cmd --permanent --add-port=9100/tcp
+  
+  - name: reload firewall
+    shell: firewall-cmd --reload
+  
+  - name: run Docker ansible
+    shell: docker run -d --restart=always --net="host" --pid="host" -v "/:/host:ro,rslave" quay.io/prometheus/node-exporter --path.rootfs=/host
+  
+  

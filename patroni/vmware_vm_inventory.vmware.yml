@@ -1,0 +1,20 @@
+---
+
+plugin: vmware_vm_inventory
+strict: False
+hostname: vcd.sbercloud.ru
+username: mp-admin
+api_version: 30.0
+password: wvN9cZSo5ww
+validate_certs: True
+with_tags: False
+properties:
+   - 'name'
+   - 'guest.ipAddress'
+
+
+#    env_host: https://vcd.sbercloud.ru/
+#    env_org: FNFRO
+#    env_api_version: 30.0
+#    env_verify_ssl_certs: true
+

@@ -1,22 +1,21 @@
-[monitor01]
-monitor01 ansible_ssh_host=10.1.200.13
-
-[monitor02]
-monitor02 ansible_ssh_host=10.1.200.14
-
-[patroni]
-pgtest01 ansible_ssh_host=10.1.200.15
-pgtest02 ansible_ssh_host=10.1.200.16
-pgtest03 ansible_ssh_host=10.1.200.17
-
-[ubuntu1]
-LoadBalancer ansible_ssh_host=10.77.150.194
-
-[prechkalov]
-pp-db-prechkalov01 ansible_ssh_host=10.1.200.15 ansible_ssh_user=root
-pp-db-prechkalov02 ansible_ssh_host=10.1.200.16 ansible_ssh_user=root
-pp-db-prechkalov03 ansible_ssh_host=10.1.200.17 ansible_ssh_user=root
 
 
 [monitor]
 media-monitor ansible_ssh_host=10.0.0.12
+
+[docker]
+db01 ansible_ssh_host=10.0.0.2
+db02 ansible_ssh_host=10.0.0.3
+db03 ansible_ssh_host=10.0.0.4
+web01 ansible_ssh_host=10.0.0.5
+web02 ansible_ssh_host=10.0.0.6
+web03 ansible_ssh_host=10.0.0.7
+web04 ansible_ssh_host=10.0.0.8
+registry ansible_ssh_host=10.0.0.9
+redis ansible_ssh_host=10.0.0.10
+openvpn ansible_ssh_host=10.0.0.11
+
+[db]
+db01 ansible_ssh_host=10.0.0.2
+db02 ansible_ssh_host=10.0.0.3
+db03 ansible_ssh_host=10.0.0.4

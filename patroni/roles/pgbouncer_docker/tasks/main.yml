@@ -24,7 +24,7 @@
 - name: Install device-mapper-persistent-data
   yum: name={{ item }} state=latest
   with_items:
-      - docker
+      - 
       - epel-release
       - yum-utils
       - device-mapper-persistent-data
@@ -87,6 +87,11 @@
     
 - name: Start Docker and Enable as service
   service: name=docker.service state=started enabled=yes
+
+- name: Install docker-compose
+  yum: name={{ item }} state=latest
+  with_items:
+      - docker-compose
 
 # - name: Install bgbouncer container
 #   docker_image:

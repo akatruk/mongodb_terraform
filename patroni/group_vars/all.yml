@@ -31,18 +31,12 @@ effective_cash_size: 12GB
 source_catalog_name: MP
 network: dev-2
 storage_profile: Silver
-source_template_name: CentOS_MP
+source_template_name: CentOS_MP_v3
 target_vdc: DATAHUB_DEV_FNFRO003
 virtual_cpus: 2
-memory: 4096
+memory: 2048
 Additional_Disk_Size: 10240
 vm_name:
-        - mediateka-db-01
-        - mediateka-db-02
-        - mediateka-db-03
-
-# ====== database access throw 6432 pgbouncer port ======
-
-user_name: xchkalov
-password_database: JLNglRNfnkv44
-database_name: xchkalovdb
+       # - ansible-awx-02
+       - d.datahub.db01
+       - ansible-awx-01

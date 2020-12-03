@@ -13,4 +13,4 @@
     env_verify_ssl_certs: true
   roles:
      - del_vappvm
-     - vappvm_loop
+    #  - vappvm_loop

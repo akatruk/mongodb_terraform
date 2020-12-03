@@ -60,17 +60,9 @@
     - wcwidth
     - psycopg2-binary
     - py
-  # executable: pip3.6
-  # virtualenv_command: /usr/bin/python3
 
 - name: put patroni.service systemd unit
   template: src=patroni.service dest=/etc/systemd/system/patroni.service backup=yes
-
-# - name: open firewall
-#   shell: firewall-cmd --permanent --add-port=5432/tcp
-
-# - name: reload firewall
-#   shell: firewall-cmd --reload
 
 - name: Start etcd and Enable as service
   service: name=etcd.service state=started enabled=yes

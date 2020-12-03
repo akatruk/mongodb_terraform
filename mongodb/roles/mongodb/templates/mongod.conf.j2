@@ -26,8 +26,16 @@ processManagement:
 # network interfaces
 net:
   port: 27017
-  bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
-sharding:
-  clusterRole: configsvr
+  bindIp: {{ansible_default_ipv4.address}}  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
+
+#operationProfiling:
+
 replication:
-  replSetName: cfgrs
+  replSetName: "rs0"
+#sharding:
+
+## Enterprise-Only Options
+
+#auditLog:
+
+#snmp:

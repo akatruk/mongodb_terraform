@@ -1,7 +1,7 @@
 ---
 
   # - name: change hostname
-
+  # list disks lsblk
   - name: great a new disk
     command: pvcreate /dev/sdb
 

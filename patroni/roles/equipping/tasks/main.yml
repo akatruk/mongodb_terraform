@@ -2,15 +2,14 @@
 
   # - name: change hostname
 
-  # - name: great a new disk
-  #   command: pvcreate /dev/sdb
+  - name: great a new disk
+    command: pvcreate /dev/sdb
 
-  # - name: extend existing vg
-  #   command: vgextend vg_centos /dev/sdb
+  - name: extend existing vg
+    command: vgextend centos /dev/sdb
 
   - name: extend existing LVM
-    command: lvextend /dev/vg_centos/lv_root -l +100%FREE
+    command: lvextend /dev/centos/root -l +100%FREE
 
   - name: Resize filesystem
-    command: resize2fs /dev/vg_centos/lv_root
-
+    command: xfs_growfs /dev/centos/root

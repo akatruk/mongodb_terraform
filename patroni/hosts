@@ -21,11 +21,7 @@ mongotest03 ansible_ssh_host=10.1.200.22
 [template]
 template01 ansible_ssh_host=10.1.200.14
 
-[mediateca]
-media-web-01 ansible_port=22 ansible_host=185.232.104.35
-media-web-02 ansible_port=23 ansible_host=185.232.104.35
-media-web-03 ansible_port=24 ansible_host=185.232.104.35
-media-web-05 ansible_port=25 ansible_host=185.232.104.35
-
-
-
+[db]
+db01 ansible_ssh_host=10.0.0.2
+db02 ansible_ssh_host=10.0.0.3
+db03 ansible_ssh_host=10.0.0.4
