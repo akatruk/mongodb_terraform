@@ -1,0 +1,59 @@
+Mongodb commands
+
+### Login ###
+mongo --port 27000 \
+--username m103-admin \
+--password m103-pass \
+--authenticationDatabase admin
+
+### DB status ###
+db.stats()
+
+### Logs ###
+#Check logging status
+db.getLogComponents()
+#get log
+db.adminCommand({"getLog" : "global"})
+#get log by file
+tail -f /var/log/mongodb/mongod.log
+
+#admins command ???
+db.adminCommand({})
+
+### Create user ###
+use admin
+db.createUser(
+   {
+     user: "m103-application-user",
+     pwd: "m103-application-pass",
+     roles: [ { role: "readWrite", db: "applicationData" } ]
+   }
+)
+### Drop User ###
+use admin
+db.dropUser("m103-application-user", {w: "majority", wtimeout: 5000})
+
+### Trouble shooting commangs ###
+## Monitoring by consol ##
+mongostat --port 27017
+
+## Profile ###
+db.getProfileLevel()
+db.setProfilingLevel(1)
+db.getProfilingStatus()
+
+
+
+mongod --config mongod6.conf --fork --logpath=/var/mongodb/logs/mongod.log 
+
+
+
+arn:aws:rds:us-west-2:792269430200:db:messaging-int-db
+
+[messaging-int-db]
+role_arn = arn:aws:iam::792269430200:role/dtci-cross-account-dataservices-admin
+source_profile = dtci-master
+color = ff2601
+
+
+### Trouble shooting commangs ###
