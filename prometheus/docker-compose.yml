@@ -39,6 +39,8 @@ services:
       - /root:/root
     command:
       - '--config.port-label=9100'
+    environment:
+      - PROMETHEUS_EXPORTER_PORT=9100
     links:
       - prometheus:prometheus
     depends_on:
