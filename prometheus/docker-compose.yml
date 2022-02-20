@@ -34,8 +34,6 @@ services:
   prometheus-ecs-autodiscovery:
     image: tkgregory/prometheus-ecs-discovery
     volumes:
-      # - ./prometheus-ecs-autodiscovery/:/etc/prometheus-ecs-autodiscovery/
-      # - prometheus_data:/prometheus-ecs-autodiscovery
       - /root:/root
     command:
       - '--config.port-label=9100'
