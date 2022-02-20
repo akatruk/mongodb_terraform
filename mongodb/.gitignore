@@ -1,7 +1,0 @@
-.terraform
-*.tfstate
-*.tfstate.*
-*.key
-password_admin
-keyfile.*
-credentials.passwd
