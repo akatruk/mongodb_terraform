@@ -37,6 +37,7 @@ services:
       - /root:/root
     command:
       - '--config.port-label=9100'
+      - '-config.write-to=/root/ecs_file_sd.yml'
     environment:
       - PROMETHEUS_EXPORTER_PORT=9100
     links:
