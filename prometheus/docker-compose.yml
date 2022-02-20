@@ -40,6 +40,7 @@ services:
     command:
       - '--config.write-to=/root/ecs_file_sd.yml'
       - '--config.port-label=9100'
+      - '--config.filter-label=PROMETHEUS_EXPORTER_PORT[=VALUE]'
     links:
       - prometheus:prometheus
     depends_on:
